@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: kafka
+  kafka:
+    # Global settings
+    bootstrap-servers: localhost:9092
+    consumer:
+      # Group ID helps share message load among multiple instances
+      group-id: my-java-application
+      # 'earliest' ensures no data is missed if the consumer starts late
+      auto-offset-reset: earliest
+    topic: demo_java,demo_java_one
+
+server:
+  port: 8081
+
+
+
