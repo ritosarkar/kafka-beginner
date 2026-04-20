@@ -4,6 +4,8 @@ package com.learning.beginner.kafka.config;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,10 +14,12 @@ import java.util.Properties;
 @Configuration
 @RequiredArgsConstructor
 public class ConsumerConfig {
+    private static final Logger log= LoggerFactory.getLogger(ConsumerConfig.class.getSimpleName());
     private final AppConfiguration appConfiguration;
 
     @Bean
     public KafkaConsumer<String, String> getConsumerProperties() {
+        log.info("I am a kafka consumer!!");
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", appConfiguration.getBootstrapServers());
         properties.setProperty("group.id", appConfiguration.getConsumer().getGroupId());
