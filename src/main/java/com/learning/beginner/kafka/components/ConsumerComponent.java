@@ -1,9 +1,7 @@
 package com.learning.beginner.kafka.components;
 
-import com.learning.beginner.kafka.config.ConsumerConfig;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.core.ApplicationContext;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
