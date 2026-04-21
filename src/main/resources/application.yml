@@ -12,6 +12,10 @@ spring:
     topic: demo_java,demo_java_one
 
 server:
+  #port: 0
+  #if we want spring to choose random port
+  # we need this type of configuration for running multiple instances of spring
+  # application in same machine
   port: 8081
   shutdown: graceful
 
