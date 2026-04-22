@@ -2,6 +2,7 @@ package com.learning.beginner.kafka.config;
 
 
 import lombok.RequiredArgsConstructor;
+import org.apache.kafka.clients.consumer.CooperativeStickyAssignor;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ public class ConsumerConfig {
         properties.setProperty("key.deserializer", StringDeserializer.class.getName());
         properties.setProperty("value.deserializer", StringDeserializer.class.getName());
         properties.setProperty("auto.offset.reset", appConfiguration.getConsumer().getAutoOffsetReset());
+        properties.setProperty("partition.assignment.strategy", CooperativeStickyAssignor.class.getName());
         KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
         kafkaConsumer.subscribe(appConfiguration.getTopic());
         return kafkaConsumer;
